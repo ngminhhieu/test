@@ -1,0 +1,12 @@
+import numpy as np 
+one_hot = np.array([[0, 0, 0, 0, 1, 0], [1, 0, 0, 1, 1, 0]])
+arr = np.array([4, 24, 63, 4, 4, 64])
+print((arr > 3).all())
+min_indices = np.where(arr == np.amin(arr))
+near_min_indices = np.where(arr == np.amin(arr) + 1)
+test = np.append(min_indices, near_min_indices)
+print(test)
+print(one_hot[:, min_indices].squeeze())
+print(np.count_nonzero(one_hot[:, min_indices].squeeze(), axis=1).argmax())
+print((one_hot[:, min_indices].squeeze() == 0).sum(1).argmax())
+print((one_hot[:, min_indices].squeeze() == 1).sum(1).argmax())
